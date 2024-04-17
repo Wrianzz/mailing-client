@@ -1,0 +1,351 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+  
+  .banner {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(img/bg2.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+  
+  .navbar {
+    width: 85%;
+    margin: auto;
+    padding: 35px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    width: 100px;
+  }
+
+  .logop {
+    width: 120px;
+  }
+  
+  .navbar ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    position: relative;
+  }
+  
+  .navbar ul li a {
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+  }
+  
+  .navbar ul li::after {
+    content: '';
+    height: 3px;
+    width: 0%;
+    background: #009688;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition: 0.5s;
+  }
+  
+  .navbar ul li:hover::after {
+    width: 100%;
+  }
+  
+  .content {
+    width: 100%;
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: #fff;
+    bottom: 35%;
+  }
+  
+  .content h1 {
+    font-size: 70px;
+    margin-top: 80px;
+  }
+  
+  .content p {
+    font-weight: 100;
+    line-height: 25px;
+    margin: 20px auto;
+  }
+  
+  button {
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid #009688;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  span {
+    content: '';
+    height: 100%;
+    width: 0;
+    background: #009688;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: 0.5s;
+  }
+  
+  button:hover span {
+    width: 100%;
+  }
+  
+  .pictures {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .pictureslogo {
+    height: 200px;
+    width: 200px;
+  }
+  
+  .login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: transparent;
+  }
+  
+  .login h1 {
+    text-align: center;
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid silver;
+    color: white;
+  }
+  
+  form .textfield {
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 30px 0;
+  }
+  
+  .textfield input {
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: transparent;
+    outline: none;
+    color: white;
+  }
+  
+  .textfield label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+    transition: 0.5s;
+  }
+  
+  .textfield span::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #2691d9;
+    transition: 0.5s;
+  }
+  
+  .banner form {
+    padding: 0 40px;
+    box-sizing: border-box;
+  }
+  
+  .textfield input:focus~label,
+  .textfield input:valid~label {
+    top: -5px;
+    color: #2691d9;
+  }
+  
+  .textfield input:focus~span::before,
+  .textfield input:valid~span::before {
+    width: 100%;
+  }
+  
+  .loginbtn {
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 50px 50px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid #009688;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .ywdah {
+    background-color: transparent;
+    bottom: -60px;
+    left: -10px;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 50px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  
+  .ywdah img {
+    height: 16px;
+    width: 16px;
+    margin-right: 5px;
+  }
+  
+  /* CSS untuk ukuran layar antara 320px dan 480px */
+  @media screen and (min-width: 320px) and (max-width: 480px) {
+    .navbar {
+      width: 90%;
+      padding: 20px 0;
+    }
+  
+    .navbar ul li {
+      margin: 0 10px;
+    }
+  
+    .logo {
+      width: 80px;
+    }
+  
+    .content h1 {
+      font-size: 40px;
+      margin-top: 40px;
+    }
+  
+    .content p {
+      font-size: 14px;
+    }
+  
+    button {
+      width: 150px;
+      margin: 15px 20px;
+      font-size: 14px;
+    }
+  
+    .pictureslogo {
+      height: 150px;
+      width: 150px;
+    }
+  
+    .login {
+      width: 300px;
+    }
+  
+    .login h1 {
+      font-size: 24px;
+    }
+  
+    form .textfield {
+      margin: 20px 0;
+    }
+  
+    .textfield input {
+      height: 30px;
+      font-size: 14px;
+    }
+  
+    .textfield label {
+      font-size: 14px;
+    }
+  
+    .loginbtn {
+      width: 150px;
+      margin: 40px 30px;
+      font-size: 14px;
+    }
+  }
+  
+  /* CSS untuk ukuran layar di atas 480px */
+  @media screen and (min-width: 481px) {
+
+    .navbar {
+      width: 80%;
+    }
+  
+    .logo1 {
+      width: 120px;
+    }
+
+    .logo {
+      width: 80px;
+    }
+  
+    .content h1 {
+      font-size: 32px;
+      margin-top: 60px;
+    }
+  
+    button {
+      font-size: 16px;
+    }
+  
+    .pictureslogo {
+      height: 250px;
+      width: 250px;
+    }
+  
+    .login {
+      width: 400px;
+    }
+  
+    .login h1 {
+      font-size: 32px;
+    }
+  
+    form .textfield {
+      margin: 30px 0;
+    }
+  
+    .textfield input {
+      height: 40px;
+      font-size: 16px;
+    }
+  
+    .textfield label {
+      font-size: 16px;
+    }
+  
+    .loginbtn {
+      font-size: 16px;
+    }
+  }
+  

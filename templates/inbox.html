@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="{{ url_for('static', filename='img/emaildirt.ico') }}" type="image/x-icon">
+    <title>MENKREP - MAILING CLIENT</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style1.css') }}"
+    />
+  </head>
+  <body>
+    <div class="bg">
+      <div class="container">
+        <h1>Inbox</h1>
+        <button class="back" onclick="goBack()">
+          <img
+            src="{{ url_for('static', filename='img/Arrow.png') }}"
+            alt="KEMBALI"
+          />
+        </button>
+        <hr />
+        <div id="messages-container">
+          {% for message in messages %}
+          <div class="message">
+            <div class="message-header">
+              <input
+                type="checkbox"
+                name="mail-id[]"
+                value="{{ message.id }}"
+              />
+              <h2 class="message-sender">{{ message.sender }}</h2>
+              <br />
+              <p class="message-date line-break">{{ message.date }}</p>
+            </div>
+            <div class="message-body">
+              <p class="message-subject"><b>{{ message.subject }}</b></p>
+              <p class="message-content">{{ message.body }}</p>
+              {% if message.status == "Encrypted" %}
+              <div class="decrypt-container">
+                <button data-message-id="{{ message.id }}">Decrypt!</button>
+              </div>
+              <div class="popup" id="popup-{{ message.id }}">
+                <div class="popup-content">
+                  <form
+                    id="decrypt-form-{{ message.id }}"
+                    data-message-id="{{ message.id }}"
+                  >
+                    <span>Percobaan: </span><span class="attempts">0</span>
+                    <input
+                      type="hidden"
+                      id="messageId"
+                      name="messageId"
+                      value="{{ message.id }}"
+                    /><br /><br />
+                    <label for="key">Key:</label>
+                    <input type="password" id="key" name="key" /><br /><br />
+                    <button type="submit" id="decrypt-button">Decrypt!</button>
+                  </form>
+                  <button class="close-btn">&times;</button>
+                </div>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <hr />
+          {% endfor %}
+          <button onclick="deleteSelectedMessages()" class="trashbin">
+            <img src="{{ url_for('static', filename='img/bin.png') }}" />
+          </button>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      function goBack() {
+        window.location.href = "/";
+      }
+
+      // Mendapatkan semua elemen dengan class "message-sender"
+      var messageSenders = document.getElementsByClassName("message-sender");
+
+      // Menambahkan event listener pada setiap elemen "message-sender"
+      for (var i = 0; i < messageSenders.length; i++) {
+        messageSenders[i].addEventListener("click", function () {
+          // Mencari elemen "message-body" terkait
+          var messageBody = this.parentNode.nextElementSibling;
+
+          // Mengubah display "message-body" menjadi "block" jika semula tersembunyi,
+          // atau menjadi "none" jika semula terlihat
+          if (messageBody.style.display === "none") {
+            messageBody.style.display = "block";
+          } else {
+            messageBody.style.display = "none";
+          }
+        });
+      }
+
+      window.addEventListener("DOMContentLoaded", (event) => {
+        const messageBodies = document.querySelectorAll(".message-body");
+
+        // Mengatur awal display untuk setiap message-body menjadi "none"
+        messageBodies.forEach((body) => {
+          body.style.display = "none";
+        });
+      });
+
+      // Rest of the JavaScript code for decryption functionality
+      const messages = document.querySelectorAll(".message");
+      messages.forEach((message, index) => {
+        const body = message.querySelector(".message-body");
+        if (message.querySelector(".decrypt-container")) {
+          const decryptBtn = message.querySelector("button");
+          decryptBtn.addEventListener("click", (event) => {
+            event.preventDefault();
+            // Get the message ID from the button's data attribute
+            const messageId = decryptBtn.getAttribute("data-message-id");
+            // Get the popup with the corresponding ID
+            const popup = document.querySelector(`#popup-${messageId}`);
+            // Show the popup when Decrypt! button is clicked
+            popup.style.display = "flex";
+
+            const form = document.querySelector(`#decrypt-form-${messageId}`);
+            const submitBtn = form.querySelector("#decrypt-button");
+            submitBtn.addEventListener("click", (event) => {
+              event.preventDefault();
+              const xhr = new XMLHttpRequest();
+              xhr.open("POST", "/inbox");
+              xhr.setRequestHeader(
+                "Content-Type",
+                "application/x-www-form-urlencoded"
+              );
+              xhr.onload = function () {
+                if (xhr.status === 200) {
+                  const response = JSON.parse(xhr.responseText);
+                  const messageBody = body.querySelector(".message-content");
+                  messageBody.innerText = response.body;
+                  popup.style.display = "none";
+                  decryptBtn.style.display = "none";
+
+                  // Hide the last decrypt button
+                  if (index === messages.length - 1) {
+                    const lastDecryptBtn = document.querySelector(
+                      ".message .decrypt-container:last-child button"
+                    );
+                    lastDecryptBtn.style.display = "none";
+                  }
+
+                  alert("Pesan berhasil di dekripsi!");
+                } else {
+                  if (xhr.status !== 200) {
+                    alert("Kunci salah! Gagal melakukan dekripsi.");
+                  }
+                  const attempts = form.querySelector(".attempts");
+                  attempts.innerText = parseInt(attempts.innerText) + 1;
+                  if (parseInt(attempts.innerText) >= 3) {
+                    submitBtn.setAttribute("disabled", true);
+                    alert(
+                      "Anda sudah mencoba dekripsi melewati batas. Silahkan refresh halaman untuk mencoba lagi."
+                    );
+                  }
+                }
+              };
+              const formData = new FormData(form);
+              xhr.send(new URLSearchParams(formData).toString());
+            });
+
+            const closeBtn = popup.querySelector(".close-btn");
+            closeBtn.addEventListener("click", () => {
+              popup.style.display = "none";
+            });
+          });
+        }
+      });
+
+      function deleteSelectedMessages() {
+        var selectedMessages = document.querySelectorAll(
+          'input[name="mail-id[]"]:checked'
+        );
+        if (selectedMessages.length === 0) {
+          alert("Tidak ada email yang dipilih untuk dihapus.");
+          return;
+        }
+
+        var confirmation = confirm(
+          "Apakah Anda yakin ingin menghapus email yang dipilih?"
+        );
+        if (confirmation) {
+          var messageIds = Array.from(selectedMessages).map(
+            (message) => message.value
+          );
+          var formData = new URLSearchParams();
+          formData.append("mail-id[]", messageIds.join(","));
+
+          fetch("/delete_email", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: formData.toString(),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.success) {
+                location.reload();
+              } else {
+                alert("Gagal menghapus email. Silakan coba lagi.");
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              alert("Gagal menghapus email. Silakan coba lagi.");
+            });
+        }
+      }
+    </script>
+  </body>
+</html>

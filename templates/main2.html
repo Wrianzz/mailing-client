@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/emaildirt.ico') }}" type="image/x-icon">
+    <title>MENKREP - MAILING CLIENT</title>
+</head>
+<body>
+    <div class="banner">
+        <div class="navbar">
+            <h1 class="logo">Welcome, {{ username }}@{{ server }}</h1>
+            <ul>
+                <li><a href="/logout">Logout</a></li>
+        </div>
+            <div class="content">
+                    <img src="{{ url_for('static', filename='img/logo1.png') }}" class="logo1">
+                    <button type="button" onclick="location.href='/send_email';"><span></span>Send Email</button>
+                    <button type="button" onclick="location.href='/inbox';"><span></span>Read Email</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

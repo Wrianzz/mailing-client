@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style0.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/emaildirt.ico') }}" type="image/x-icon">
+    <title>MENKREP - MAILING CLIENT</title>
+</head>
+<body>
+    <div class="hero">
+        <form method='POST' action='/send_email'>
+            <div class="input-group">
+                <input type="text" value="{{ username }}@{{ server }}" name="sender" readonly required>
+            </div>
+            <div class="input-group">
+                <input type="text" name="recipient" required>
+                <label for="email">Send To</label>
+            </div>
+            <div class="input-group">
+                <input type="text" id="subject" name="subject" required>
+                <label for="Subject">Subject</label>
+            </div>
+            <div class="input-group">
+                <textarea type="text" id="messages" rows="8" name="message" required></textarea>
+                <label for="Messages">Message</label>
+            </div>
+            <div class="checkbox">
+                <label for="checkbox">Encrypt?</label>
+                <input type="checkbox" class="checkbox" id="checkbox" name="encrypt" onclick=checkFunction()>
+            </div>
+            <div class="modal hidden">
+                <div class="container">
+                    <label for="enckey">Key:</label>
+                    <input type="password" id="enckey" name="key" placeholder="Encryption key length must be at least 4 characters">
+                </div>
+              </div>
+            <button type="submit" class="send">Send</button>
+        </form>
+<script>
+    var modal = document.querySelector(".modal");
+    var container = modal.querySelector(".container");
+    var checkbox = document.querySelector("#checkbox");
+    var status = '{{ status }}';
+
+    if (status == 1){
+        alert('Email has been sent successfully');
+    } else if (status == 0){
+        alert('An error occured while send this message!\nPlease make sure everything is correct.');
+    } else{
+    }
+    function goBack() {
+	    window.location.href = '/';
+    }
+    function checkFunction() {
+    if (checkbox.checked == true) {
+        modal.classList.remove("hidden")
+    } else {
+        modal.classList.add("hidden")
+    }
+    document.querySelector(".modal").addEventListener("click", function (e) {
+        if (e.target !== modal && e.target !== container) return;
+        modal.classList.add("hidden")
+    });
+    }
+</script>
+<script> 
+</script>
+<script>
+</script>
+	 <button class="return" onclick="goBack()">Return</button>
+    </div>
+</body>
+</html>

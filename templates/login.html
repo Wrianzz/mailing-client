@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/emaildirt.ico') }}" type="image/x-icon">
+    <title>MENKREP - MAILING CLIENT</title>
+</head>
+<body>
+    <div class="banner">
+    <div id="login" class="login">
+            <button class="ywdah" onclick="goBack()"><img src=" {{ url_for('static', filename='img/Arrow.png') }} " alt="KEMBALI"></button>
+        <h1>Login</h1>
+    <form method="post">
+        <div class="textfield">
+            <input type="text" name="username" required>
+            <span></span>
+            <label>E-mail</label>
+        </div>
+        <div class="textfield">
+            <input type="password" name="password" required>
+            <span></span>
+            <label>Password</label>
+        </div>
+        <input class="loginbtn" type="submit" value="LOGIN" >
+    </div>
+    </form>
+<script> 
+      var status = '{{ status }}';
+      if (status == 0){
+        alert('Invalid login credentials specified!');
+      }
+      else{
+      }
+</script>
+<script>function goBack() {
+        document.location.href='/';
+      }
+</script>
+    </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,314 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+button{
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid #009688;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+span{
+    content: '';
+    height: 100%;
+    width: 0;
+    background:#009688;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: 0,5s;
+}
+
+button:hover span{
+    width: 100%;
+}
+/* c_message.html */
+
+.hero{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)), url(../static/img/bg2.jpg);
+    background-position: center;
+    background-size: cover;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-group input[type="text"], 
+.container input[type="password"], 
+.input-group textarea{
+    width: 100%;
+    padding: 10px;
+    outline: 0;
+    border: 1px solid #fff;
+    color: #fff;
+    background: transparent;
+    font-size: 15px;
+    border-radius: 5px;
+    border-color:aqua;
+    transition: .5s;
+    resize: none;
+}
+
+.container label {
+    color: #adadad;
+    padding-bottom: 10px;
+}
+
+.checkbox {
+    position: relative;
+    left: 10px;
+    border: 1px solid #009688;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+.checkbox label {
+    margin-left: 250px;
+    color:#2691d9;
+    text-align: center;
+  }
+  
+.checkbox input[type="checkbox"] {
+    transform: scale(1.0);
+    top: 2px;
+  }
+
+.hero .input-group label{
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    color: #adadad;
+    font-size: 16px;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-group{
+    margin-bottom: 30px;
+    position: relative;
+    border-radius: 25px;
+}
+
+.hero form{
+    width: 90%;
+    max-width: 600px;
+}
+
+.hero .input-group input[type="text"]:focus ~ label,
+.hero .input-group input[type="password"]:focus ~ label,
+.hero .input-group input[type="text"]:valid ~ label,
+.hero .input-group input[type="password"]:valid ~ label,
+.hero .input-group textarea:focus ~ label,
+.hero .input-group textarea:valid ~ label{
+    top: -35px;
+    font-size: 14px;
+}
+
+.hero textarea {
+    cursor: auto;
+}
+
+.hero textarea::-webkit-scrollbar{
+    width: 12px;
+}
+
+.hero textarea::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #009688;   
+}
+
+.hero textarea::-webkit-scrollbar-thumb:window-inactive {
+	background: #2691d9; 
+}
+
+.hero textarea::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px #2691d9;
+    -webkit-box-shadow: inset 0 0 6px #2691d9; 
+    -webkit-border-radius: 5px;
+    border-radius: 10px;
+}
+
+.return{
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 20px -100px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid #009688;
+    background: transparent;
+    color: #fff;
+    top: 222.5px;
+    left: -75px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.send{
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 30px 10px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid #009688;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    top: 12px;
+    right: 12px;
+}
+
+/* modal for encryption key */
+
+.modal {
+    background-color: rgba(0,0,0,0.4); /* Transparent dimmed overlay */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: table;
+  }
+  
+.modal.hidden {
+    display: none;
+}
+  
+.modal .container {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: transparent;
+    border-radius: 20px;
+    outline-color:#009688;
+    outline-width: 10px;
+}
+
+.modal.container input:valid ~ label {
+    top : -35px;
+    font-size: 14px;
+}
+
+  
+.modal .body {
+    box-shadow: 5px 10px #888888;
+    display: inline-block;
+    background-color: white;
+    border: 1px solid black; 
+    padding: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+    .banner{
+        background-size: auto;
+    }
+    .navbar{
+    width: 95%;
+    padding: 15px 0;
+    }
+    
+    .logo{
+    width: 80px;
+    }
+    
+    .navbar ul li{
+    margin: 0 10px;
+    }
+    
+    .content h1{
+    font-size: 40px;
+    }
+    
+    .content p{
+    font-size: 14px;
+    }
+    
+    .pictures{
+    height: auto;
+    }
+    
+    .pictureslogo{
+    height: 150px;
+    width: 150px;
+    }
+    
+    .login{
+    width: 300px;
+    }
+    
+    .loginbtn{
+    margin: 30px 10px;
+    }
+    
+    .ywdah {
+    bottom: -50px;
+    left: -5px;
+    width: 40px;
+    }
+    
+    .ywdah img {
+    height: 12px;
+    width: 12px;
+    }
+
+    .input-group{
+        display: flex!important;
+        align-items: center!important;
+    }
+
+    .checkbox label{
+        padding-left: 0px;
+        margin-right: 50px;
+    }
+
+    .checkbox{
+        left: 0px;
+    }
+
+    .checkbox input{
+        left: -50px;
+    }
+
+    .return{
+        left: -100px;
+    }
+}
+
+@media only screen and (min-width: 480px) {
+    .checkbox label{
+        margin: auto;
+        padding: 10px;
+    }
+
+    .checkbox{
+        left: 0px;
+    }
+
+    .checkbox input{
+        left: -10px;
+    }
+}

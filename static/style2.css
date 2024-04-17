@@ -1,0 +1,245 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.banner {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(img/bg2.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.navbar {
+  width: 85%;
+  margin: auto;
+  padding: 35px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 100px;
+  color: #fff;
+}
+
+.navbar ul li {
+  list-style: none;
+  border-radius: 25px;
+  border: 1px #009688;
+  display: inline-block;
+  margin: 0 20px;
+  position: relative;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.navbar ul li::after {
+  content: '';
+  height: 3px;
+  width: 0%;
+  background: #009688;
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  transition: 0.5s;
+}
+
+.navbar ul li:hover::after {
+  width: 100%;
+}
+
+.content {
+  width: 100%;
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  text-align: center;
+  color: #fff;
+  bottom: 35%;
+}
+
+.logo1 {
+  display: block;
+  margin: 40px auto 50px;
+  bottom: 100px;
+  width: 50px; /* Ubah sesuai ukuran gambar Anda */
+}
+
+button {
+  display: inline-block;
+  width: 200px;
+  padding: 15px 0;
+  text-align: center;
+  margin: 20px 40px;
+  border-radius: 25px;
+  font-weight: bold;
+  border: 2px solid #009688;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+span {
+  content: '';
+  height: 100%;
+  width: 0;
+  background: #009688;
+  border-radius: 25px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  transition: 0.5s;
+}
+
+button:hover span {
+  width: 100%;
+}
+
+/* Responsiveness */
+
+/* CSS untuk ukuran layar yang lebih kecil dari 480px */
+@media screen and (max-width: 479px) {
+  .navbar {
+      width: 90%;
+      padding: 15px 0;
+  }
+
+  .navbar ul li {
+      margin: 0 10px;
+  }
+
+  .logo1 {
+      margin: 20px auto 30px;
+      width: 30px;
+  }
+
+  .logo{
+    font-size: 18px;
+  }
+
+  h1{
+    font-size: 20px;
+  }
+
+  button {
+      width: 150px;
+      margin: 10px 30px;
+      font-size: 14px;
+  }
+
+  .content {
+      top: 50%;
+      bottom: auto;
+  }
+}
+
+/* CSS untuk ukuran layar antara 480px dan 767px, misalnya untuk smartphone */
+@media screen and (min-width: 480px) and (max-width: 767px) {
+  .navbar {
+      width: 90%;
+      padding: 20px 0;
+  }
+
+  .navbar ul li {
+      margin: 0 10px;
+  }
+
+  .logo{
+    font-size: 18px;
+  }
+
+  h1{
+    font-size: 20px;
+  }
+
+  .logo1 {
+      margin: 30px auto 40px;
+      width: 100px;
+  }
+
+  button {
+      width: 150px;
+      margin: 15px 30px;
+      font-size: 14px;
+  }
+
+  .content {
+      top: 50%;
+      bottom: auto;
+  }
+}
+
+/* CSS untuk ukuran layar antara 768px dan 1023px, misalnya untuk tablet */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .navbar {
+      width: 80%;
+      padding: 25px 0;
+  }
+
+  .navbar ul li {
+      margin: 0 15px;
+  }
+
+  .logo{
+    font-size: 18px;
+  }
+
+  h1{
+    font-size: 20px;
+  }
+
+  .logo1 {
+      margin: 30px auto 40px;
+      width: 100px;
+  }
+
+  button {
+      width: 170px;
+      margin: 15px 35px;
+      font-size: 16px;
+  }
+
+  .content {
+      top: 45%;
+      bottom: auto;
+  }
+}
+
+/* CSS untuk ukuran layar yang lebih besar dari 1024px, misalnya untuk desktop */
+@media screen and (min-width: 1024px) {
+  .navbar {
+      width: 85%;
+      padding: 35px 0;
+  }
+
+  .navbar ul li {
+      margin: 0 20px;
+  }
+
+  .logo1 {
+      margin: 40px auto 50px;
+      width: 150px;
+  }
+
+  button {
+      width: 200px;
+      margin: 20px 40px;
+      font-size: 18px;
+  }
+
+  .content {
+      top: 40%;
+      bottom: 35%;
+  }
+}

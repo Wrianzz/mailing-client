@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MENKREP - MAILING CLIENT</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="banner">
+        <div class="navbar">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" class="logo">
+            <img src="{{ url_for('static', filename='img/RKS.png') }}" class="logop">
+        </div>
+            <div class="content">
+                <img src="{{ url_for('static', filename='img/logo1.png') }}" class="logo1">
+                <h1>MENKREP - MAILING CLIENT</h1>
+                    <button type="button" onclick="location.href='/login';"><span></span>LOGIN</button>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

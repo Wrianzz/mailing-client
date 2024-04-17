@@ -1,0 +1,428 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.bg{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)), url(../static/img/bg2.jpg);
+    background-position: center;
+    background-size: cover;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    overflow-y: scroll;
+    width: 60%;
+    height: 80%;
+    margin: 0 auto;
+    background-color: transparent;
+    padding: 20px;
+    border: 1px solid #2691d9;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+h1 {
+    align-items: center;
+    text-align: center;
+    color: #2691d9;
+}
+
+h2{
+    color: #2691d9;
+}
+
+p{
+    color: #2691d9;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+    margin: 10px 0;
+}
+
+.message {
+    cursor: pointer;
+}
+
+.message-header {
+    display: flex;
+    align-items: center;
+}
+
+.checkmark-sender{
+    display: inline-block;
+}
+
+.message-header input [type="checbox"]{
+    margin-right: 5px;
+}
+
+.message-sender{
+    margin-right: 10px;
+}
+
+.message-sender::before {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.message-date::before {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.message-date {
+    margin-left: auto;
+}
+  
+
+.message-subject::after {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.message-content {
+    word-wrap: break-word;
+    margin: 0;
+    font-size: 1rem;
+}
+
+.back{
+    background-color: transparent;
+    bottom: -60px;
+    left: -10px;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 50px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.back img{
+    height: 16px;
+    width : 16px;
+    margin-right: 5px;
+}
+
+/* Popup container */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+  
+  /* Popup content */
+.popup-content {
+    background-color: transparent;
+    color: #2691d9;
+    padding: 20px;
+    border: 1px solid #2691d9;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+  
+  /* Close button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+/* Gaya scrollbar di WebKit (Chrome, Safari) */
+.container::-webkit-scrollbar {
+    width: 10px;
+    height: 1px;
+}
+  
+.container::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 15px;
+    height: 10px;
+}
+  
+.container::-webkit-scrollbar-thumb {
+    background-color: #009688;
+    border-radius: 15px;
+}
+  
+.container::-webkit-scrollbar-thumb:hover {
+    background-color: #00796b;
+}
+
+button{
+    width: 100px;
+    text-align: center;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid #009688;
+    background: transparent;
+    color: #fff;
+}
+
+
+.message-checkbox {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    left: 0;
+    top: 5px;
+    height: 18px;
+    width: 18px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.floating {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}  
+
+.trashbin{
+    position: fixed;
+    background-color: transparent;
+    top: 15%;
+    right: 200px;
+    border: 1px solid #009688;
+    padding: 8px 16px;
+    transform: translate(-50%);
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    border-radius: 12px;
+    transition-duration: 0.4s;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.trashbin img{
+    height: 35px;
+    width : 35px;
+    margin-left: -10px;
+}
+
+
+/* .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.checkmark::after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkmark::after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 9px;
+    border: solid #009688;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}*/
+
+
+.message-checkbox:checked + .checkmark::after {
+    display: block;
+}
+
+.close-btn{
+    font-size: 24px;
+    padding: 8px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+    /* Gambar Tombol Kembali */
+    .back img {
+      height: 12px;
+      width: 12px;
+      margin-right: 3px;
+    }
+  
+    .container {
+      width: 90%;
+      height: 60%;
+      max-height: none;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+  
+    /* Judul */
+    h1 {
+      font-size: 18px;
+      top: -5px;
+    }
+  
+    /* Pengirim */
+    .message-sender {
+      font-size: 14px;
+    }
+  
+    /* Tanggal */
+    .message-date {
+      font-size: 10px;
+    }
+  
+    /* Subjek */
+    .message-subject {
+      font-size: 12px;
+    }
+  
+    /* Isi Pesan */
+    .message-content {
+      font-size: 10px;
+    }
+  
+    .trashbin {
+      top: 5%;
+      right: -20px;
+    }
+  }
+  
+  @media screen and (min-width: 481px) and (max-width: 768px) {
+    /* Gambar Tombol Kembali */
+    .back img {
+      height: 14px;
+      width: 14px;
+      margin-right: 3px;
+    }
+  
+    .container {
+      width: 90%;
+      height: 70%;
+      max-height: none;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  
+    /* Judul */
+    h1 {
+      font-size: 20px;
+    }
+  
+    /* Pengirim */
+    .message-sender {
+      font-size: 16px;
+    }
+  
+    /* Tanggal */
+    .message-date {
+      font-size: 12px;
+    }
+  
+    /* Subjek */
+    .message-subject {
+      font-size: 14px;
+    }
+  
+    /* Isi Pesan */
+    .message-content {
+      font-size: 12px;
+    }
+  
+    .loginbtn {
+      margin: 30px 10px;
+    }
+  
+    .trashbin {
+      top: 5px;
+      right: 7%;
+      transform: translateX(50%);
+    }
+  }
+  
+  @media screen and (min-width: 769px) {
+    /* Gambar Tombol Kembali */
+    .back img {
+      height: 16px;
+      width: 16px;
+      margin-right: 5px;
+    }
+  
+    .container {
+      width: 60%;
+      height: 80%;
+      margin: 0 auto;
+      background-color: transparent;
+      padding: 20px;
+      border: 1px solid #2691d9;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+    }
+  
+    /* Judul */
+    h1 {
+      align-items: center;
+      text-align: center;
+      color: #2691d9;
+    }
+  
+    /* Pengirim */
+    .message-sender {
+      margin-right: 10px;
+    }
+  
+    /* Tanggal */
+    .message-date {
+      margin-left: auto;
+    }
+  
+    .trashbin {
+      position: fixed;
+      background-color: transparent;
+      top: 15%;
+      right: 50px;
+      border: 1px solid #009688;
+      padding: 8px 16px;
+      transform: translate(-50%);
+      display: inline-block;
+      height: 50px;
+      width: 50px;
+      cursor: pointer;
+      border-radius: 12px;
+      transition-duration: 0.4s;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+  }  
